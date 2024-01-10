@@ -33,8 +33,8 @@
                                 @foreach($businessUnits as $unit)
                                     <tr>
                                         <td>{{ $i++ }}</td>
-                                        <td>{{ $unit->BuID }}</td>
                                         <td>{{ $unit->name }}</td>
+                                        <td>{{ $unit->BuID }}</td>
                                         <td>
                                             <form action="{{ route('business_units.destroy', $unit) }}" method="POST">
                                                 @csrf

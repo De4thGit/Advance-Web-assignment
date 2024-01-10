@@ -31,7 +31,7 @@ class BusinessUnitController extends Controller
         
         business_units::create($validated);
 
-        return redirect()->route('BusinessUnit.index')
+        return redirect()->route('business_units.index')
             ->withSuccess('New business unit added successfully');
     }
 
@@ -54,7 +54,7 @@ class BusinessUnitController extends Controller
 
         $businessUnit->update($validated);
 
-        return redirect()->route('BusinessUnit.index')
+        return redirect()->route('business_units.index')
             ->withSuccess('Business unit updated successfully');
     }
 
@@ -62,7 +62,7 @@ class BusinessUnitController extends Controller
     {
         $businessUnit->delete();
         
-        return redirect()->route('BusinessUnit.index')
+        return redirect()->route('business_units.index')
             ->withSuccess('Business unit deleted successfully');
     }
 }
