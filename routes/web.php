@@ -31,7 +31,7 @@ Route::get('/business_units/create', [BusinessUnitController::class, 'create'])-
 Route::post('/business_units', [BusinessUnitController::class, 'store'])->name('business_units.store');
 Route::get('/business_units/{businessUnit}', [BusinessUnitController::class, 'show'])->name('business_units.show');
 Route::get('/business_units/{businessUnit}/edit', [BusinessUnitController::class, 'edit'])->name('business_units.edit');
-Route::put('/business_units/{businessUnit}', [BusinessUnitController::class, 'update'])->name('business_units.update');
+Route::patch('/business_units/{business_unit}', [BusinessUnitController::class, 'update'])->name('business_units.update');
 Route::delete('/business_units/{businessUnit}', [BusinessUnitController::class, 'destroy'])->name('business_units.destroy');
 
 // Project Routes

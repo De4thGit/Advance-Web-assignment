@@ -20,26 +20,21 @@ return new class extends Migration
         Schema::table('progress_reports', function (Blueprint $table) {
             $table->foreign('project_id')->references('id')->on('projects');
         });
-    
     }
     
     public function down()
     {
         Schema::table('projects', function (Blueprint $table) {
-            // Drop foreign key constraints
             $table->dropForeign(['bu_id']);
             $table->dropForeign(['lead_developer_id']);
         });
     
         Schema::table('developers', function (Blueprint $table) {
-            // Drop foreign key constraints
             $table->dropForeign(['project_id']);
         });
     
         Schema::table('progress_reports', function (Blueprint $table) {
-            // Drop foreign key constraints
             $table->dropForeign(['project_id']);
         });
-    
     }
 };
