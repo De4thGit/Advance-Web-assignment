@@ -13,10 +13,6 @@ return new class extends Migration
             $table->foreign('lead_developer_id')->references('id')->on('developers');
         });
     
-        Schema::table('developers', function (Blueprint $table) {
-            $table->foreign('project_id')->references('id')->on('projects');
-        });
-    
         Schema::table('progress_reports', function (Blueprint $table) {
             $table->foreign('project_id')->references('id')->on('projects');
         });

@@ -12,7 +12,6 @@ class CreateDevelopersTable extends Migration
             $table->id();
             $table->string('StaffID', 255);
             $table->string('name', 255);
-            $table->unsignedBigInteger('project_id')->nullable(); // Make it nullable
             $table->timestamps();
             $table->softDeletes(); 
         });

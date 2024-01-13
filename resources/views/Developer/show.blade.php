@@ -22,10 +22,6 @@
                         <td>Staff ID</td>
                         <td>{{ $developer->StaffID }}</td>
                     </tr>
-                    <tr>
-                        <td>Associated Project</td>
-                        <td>{{ $developer->project->title }}</td>
-                    </tr>
                 </table>
             </div>
         </div>
