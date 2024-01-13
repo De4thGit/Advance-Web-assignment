@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class business_units extends Model
 {
     protected $fillable = [
-        'id','name', 'BuID'
+        'name', 'BuID'
     ];
 
     public function projects()

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\projects;
+use App\Models\business_units;
+use App\Models\developers;
 
 class ProjectController extends Controller
 {
@@ -18,18 +20,20 @@ class ProjectController extends Controller
 
     public function create()
     {
-        return view('project.create');
+        $businessUnits = business_units::all(); 
+        $developers = developers::all();
+        return view('project.create', compact('businessUnits', 'developers'));
     }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
+            'bu_id' => 'required|integer',
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'start_date' => 'required|date',
             'duration' => 'required|integer',
             'end_date' => 'required|date',
-            'status' => 'required|string|max:50',
             'lead_developer_id' => 'required|exists:developers,id',
             'platform' => 'required|string|max:50',
             'deployment_type' => 'required|string|max:50',
@@ -39,8 +43,7 @@ class ProjectController extends Controller
 
         projects::create($validated);
 
-        return redirect()->route('project.index')
-            ->withSuccess('New project added successfully');
+        return redirect()->route('projects.index')->withSuccess('New project added successfully');
     }
 
     public function show(projects $project)
@@ -50,29 +53,29 @@ class ProjectController extends Controller
 
     public function edit(projects $project)
     {
-        return view('project.edit', compact('project'));
+        $developers = developers::all();
+        $businessUnits = business_units::all();
+        return view('project.edit', compact('project','developers','businessUnits'));
     }
 
     public function update(Request $request, projects $project)
     {
         $validated = $request->validate([
+            'bu_id' => 'required|integer',
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'start_date' => 'required|date',
             'duration' => 'required|integer',
             'end_date' => 'required|date',
-            'status' => 'required|string|max:50',
             'lead_developer_id' => 'required|exists:developers,id',
             'platform' => 'required|string|max:50',
             'deployment_type' => 'required|string|max:50',
             'development_methodology' => 'required|string|max:255',
         ]);
 
-        
-
         $project->update($validated);
 
-        return redirect()->route('project.index')
+        return redirect()->route('projects.index')
             ->withSuccess('Project updated successfully');
     }
 
@@ -80,7 +83,7 @@ class ProjectController extends Controller
     {
         $project->delete();
         
-        return redirect()->route('project.index')
+        return redirect()->route('projects.index')
             ->withSuccess('Project deleted successfully');
     }
 }

@@ -4,11 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\projects;
+
 
 class developers extends Model
 {
-    public function project()
+    protected $fillable = [
+        'name', 'StaffID'
+    ];
+
+
+    public function projects()
     {
-        return $this->belongsTo(Project::class);
+        return $this->belongsTo(projects::class,'project_id');
     }
 }

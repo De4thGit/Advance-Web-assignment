@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\progress_reports;
+use App\Models\projects;
 
 class ProgressReportController extends Controller
 {
@@ -21,7 +22,8 @@ class ProgressReportController extends Controller
      */
     public function create()
     {
-        return view('ProgressReport.create');
+        $projects = projects::all();
+        return view('ProgressReport.create', compact('projects'));
     }
 
     public function store(Request $request)
@@ -35,7 +37,7 @@ class ProgressReportController extends Controller
 
         progress_reports::create($validated);
 
-        return redirect()->route('ProgressReport.index')
+        return redirect()->route('progress_reports.index')
             ->withSuccess('New progress report added successfully');
     }
 
@@ -46,7 +48,8 @@ class ProgressReportController extends Controller
 
     public function edit(progress_reports $progressReport)
     {
-        return view('ProgressReport.edit', compact('progressReport'));
+        $projects = projects::all();
+        return view('ProgressReport.edit', compact('progressReport', 'projects'));
     }
 
     public function update(Request $request, progress_reports $progressReport)
@@ -68,7 +71,7 @@ class ProgressReportController extends Controller
     {
         $progressReport->delete();
         
-        return redirect()->route('ProgressReport.index')
+        return redirect()->route('progress_reports.index')
             ->withSuccess('Progress report deleted successfully');
     }
 }

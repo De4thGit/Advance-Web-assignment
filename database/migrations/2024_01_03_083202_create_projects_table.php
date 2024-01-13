@@ -16,14 +16,13 @@ class CreateProjectsTable extends Migration
             $table->date('start_date');
             $table->integer('duration');
             $table->date('end_date');
-            $table->string('status', 50);
-            $table->unsignedBigInteger('lead_developer_id');
+            $table->string('status', 50)->nullable();;
+            $table->unsignedBigInteger('lead_developer_id')->nullable(); // Make it nullable
             $table->string('platform', 50);
             $table->string('deployment_type', 50);
             $table->string('development_methodology', 255);
             $table->timestamps();
             $table->softDeletes(); 
-
         });
     }
 
@@ -31,4 +30,4 @@ class CreateProjectsTable extends Migration
     {
         Schema::dropIfExists('projects');
     }
-}; 
+};

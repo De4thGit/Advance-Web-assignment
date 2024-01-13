@@ -29,13 +29,12 @@
                             @endif
                         </td>
                     </tr>
-                    <!-- Add other fields as needed -->
-
                 </table>
             </div>
         </div>
         <div class="text-center mt-3">
             <a class="btn btn-warning" href="{{ route('business_units.index') }}">Back</a>
+            <a class="btn btn-primary" href="{{ route('projects.create') }}">Create New Project</a>
         </div>
     </div>
 @endsection
