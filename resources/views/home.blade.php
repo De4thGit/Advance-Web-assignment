@@ -15,6 +15,14 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+
+                    <!-- Add buttons to link to index pages -->
+                    <div class="mt-3">
+                        <a href="{{ route('business_units.index') }}" class="btn btn-primary">Business Units</a>
+                        <a href="{{ route('projects.index') }}" class="btn btn-primary">Projects</a>
+                        <a href="{{ route('developers.index') }}" class="btn btn-primary">Developers</a>
+                        <a href="{{ route('progress_reports.index') }}" class="btn btn-primary">Progress Reports</a>
+                    </div>
                 </div>
             </div>
         </div>
