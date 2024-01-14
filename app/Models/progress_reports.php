@@ -12,12 +12,11 @@ class progress_reports extends Model
         'project_id',
         'date_of_progress',
         'progress_status',
-        'progress_description',
-        // Add other fields as needed
+        'progress_description'
     ];
     
     public function project()
     {
-        return $this->belongsTo(projects::class);
+        return $this->belongsTo(projects::class, 'project_id');
     }
 }

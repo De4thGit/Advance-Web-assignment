@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\developers;
+use App\Models\progress_reports;
 
 class projects extends Model
 {
     protected $fillable = [
-        'title', 'description', 'start_date', 'duration', 'end_date','lead_developer_id', 'platform', 'deployment_type', 'development_methodology','bu_id'
+        'title', 'description', 'start_date', 'duration', 'end_date','lead_developer_id', 'platform', 'deployment_type', 'development_methodology','bu_id','status'
     ];
 
     public function businessUnit()
@@ -22,13 +23,8 @@ class projects extends Model
         return $this->belongsTo(developers::class, 'lead_developer_id');
     }
 
-    public function developers()
-    {
-        return $this->hasMany(developers::class, 'project_id');
-    }
-
     public function progressReports()
     {
-        return $this->hasMany(ProgressReport::class);
+        return $this->hasMany(progress_reports::class, 'project_id');
     }
 }

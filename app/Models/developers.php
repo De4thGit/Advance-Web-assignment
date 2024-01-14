@@ -16,6 +16,6 @@ class developers extends Model
 
     public function projects()
     {
-        return $this->belongsTo(projects::class,'project_id');
+        return $this->belongsTo(projects::class);
     }
 }

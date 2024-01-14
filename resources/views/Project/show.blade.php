@@ -1,39 +1,46 @@
-<!-- resources/views/ProgressReport/show.blade.php -->
+<!-- resources/views/Project/show.blade.php -->
 @extends('layouts.app')
 
 @section('content')
     <div class="container">
-        <!-- Display progress report details -->
         <div class="card">
-            <div class="card-header"><h1>Progress Report Details</h1></div>
+            <div class="card-header">
+                <h1>{{ $project->title }}</h1>
+            </div>
             <div class="card-body">
                 <table class="table">
                     <tr>
-                        <td>ID</td>
-                        <td>{{ $progressReport->id }}</td>
+                        <td>Description</td>
+                        <td>{{ $project->description }}</td>
                     </tr>
                     <tr>
-                        <td>Project</td>
-                        <td>{{ $progressReport->project->title }}</td>
+                        <td>Start Date</td>
+                        <td>{{ $project->start_date }}</td>
                     </tr>
                     <tr>
-                        <td>Date of Progress</td>
-                        <td>{{ $progressReport->date_of_progress }}</td>
+                        <td>End Date</td>
+                        <td>{{ $project->end_date }}</td>
                     </tr>
                     <tr>
                         <td>Status</td>
-                        <td>{{ $progressReport->progress_status }}</td>
+                        <td>
+                            @if($project->progressReports->count() > 0)
+                                {{ $project->progressReports->last()->progress_status }}
+                            @else
+                                No progress report
+                            @endif
+                        </td>
                     </tr>
                     <tr>
-                        <td>Description</td>
-                        <td>{{ $progressReport->progress_description }}</td>
+                        <td>Lead Developer</td>
+                        <td>{{ $project->leadDeveloper->name }}</td>
                     </tr>
                 </table>
             </div>
         </div>
         <div class="text-center mt-3">
-            <a class="btn btn-warning" href="{{ route('progress_reports.index') }}">Back</a>
-            <a class="btn btn-primary" href="{{ route('progress_reports.edit', $progressReport->id) }}">Edit Details</a>
+            <a class="btn btn-warning" href="{{ route('projects.index') }}">Back</a>
+            <a class="btn btn-primary" href="{{ route('projects.edit', $project->id) }}">Edit Project</a>
         </div>
     </div>
 @endsection

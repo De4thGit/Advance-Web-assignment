@@ -25,10 +25,10 @@
                         <td>{{ $project->start_date }}</td>
                         <td>{{ $project->end_date }}</td>
                         <td>
-                            @if($project->status)
-                                {{ $project->status->ProgressReport}}
+                            @if($project->progressReports->count() > 0)
+                                {{ $project->progressReports->last()->progress_status }}
                             @else
-                                No status
+                                No progress report
                             @endif
                         </td>
                         <td>{{ $project->leadDeveloper->name }}</td>

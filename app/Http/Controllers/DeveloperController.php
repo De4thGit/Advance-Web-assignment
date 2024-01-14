@@ -28,7 +28,6 @@ class DeveloperController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'StaffID' => 'required|string|max:255',
-            'project_id' => 'nullable|integer'
         ]);
 
         developers::create($validated);
@@ -52,7 +51,6 @@ class DeveloperController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'StaffID' => 'required|string|max:255',
-            'project_id' => 'nullable|integer'
         ]);
 
         $developer->update($validated);
