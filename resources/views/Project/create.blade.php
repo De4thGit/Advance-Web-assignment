@@ -72,20 +72,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="form-group row mb-3">
-                        <label for="lead_developer_id" class="col-sm-2 col-form-label">Lead Developer</label>
-                        <div class="col-sm-10">
-                            <select name="lead_developer_id" class="form-control" id="lead_developer_id" required>
-                                <option value="" disabled selected>Select a Lead Developer</option>
-                                @foreach($developers as $developer)
-                                    <option value="{{ $developer->id }}">{{ $developer->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('lead_developer_id')
-                                <strong style="width: 100%; margin-top: 0.25rem; font-size: 80%; color: #e3342f;">{{ $message }}</strong>
-                            @enderror
-                        </div>
-                    </div>
+                    
                     <div class="form-group row mb-3">
                         <label for="platform" class="col-sm-2 col-form-label">Platform</label>
                         <div class="col-sm-10">

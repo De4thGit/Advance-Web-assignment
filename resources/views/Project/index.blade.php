@@ -31,7 +31,7 @@
                                 No progress report
                             @endif
                         </td>
-                        <td>{{ $project->leadDeveloper->name }}</td>
+                        <td>{{ $project->leadDeveloper ? $project->leadDeveloper->name : 'Not assigned' }}</td>
                         <td>
                             <a href="{{ route('projects.show', $project->id) }}" class="btn btn-info">Show</a>
                             <a href="{{ route('projects.edit', $project->id) }}" class="btn btn-warning">Edit</a>

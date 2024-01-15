@@ -34,11 +34,10 @@ class ProjectController extends Controller
             'start_date' => 'required|date',
             'duration' => 'required|integer',
             'end_date' => 'required|date',
-            'lead_developer_id' => 'required|exists:developers,id',
+            'lead_developer_id' => 'sometimes|nullable|exists:developers,id',
             'platform' => 'required|string|max:50',
             'deployment_type' => 'required|string|max:50',
             'development_methodology' => 'required|string|max:255',
-            // Add more validation rules as needed
         ]);
 
         projects::create($validated);
@@ -67,7 +66,7 @@ class ProjectController extends Controller
             'start_date' => 'required|date',
             'duration' => 'required|integer',
             'end_date' => 'required|date',
-            'lead_developer_id' => 'required|exists:developers,id',
+            'lead_developer_id' => 'sometimes|nullable|exists:developers,id',
             'platform' => 'required|string|max:50',
             'deployment_type' => 'required|string|max:50',
             'development_methodology' => 'required|string|max:255',
