@@ -16,4 +16,9 @@ class business_units extends Model
         return $this->hasMany(projects::class, 'bu_id');
     }
 
+    public function users()
+    {
+        return $this->hasMany(User::class, 'business_unit_id');
+    }
+
 }

@@ -37,7 +37,14 @@ class BusinessUnitController extends Controller
 
     public function show(business_units $businessUnit)
     {
-        return view('BusinessUnit.show', compact('businessUnit'));
+        $user = auth()->user();
+
+        if ($user->user_level === 2 && $user->business_unit_id) {
+            $businessUnit = business_units::find($user->business_unit_id);
+            return view('BusinessUnit.show', compact('businessUnit'));
+        }
+
+        abort(403, 'Unauthorized');
     }
 
     public function edit(business_units $businessUnit)

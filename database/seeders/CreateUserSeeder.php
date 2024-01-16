@@ -20,10 +20,29 @@ class CreateUserSeeder extends Seeder
             ], 
 
             [ 
-                'name'=>'Business unit User ', 
-                'email'=>'Bu@uniten.edu.my', 
+                'name'=>'Business unit 1 ', 
+                'email'=>'1@uniten.edu.my', 
                 'password'=> bcrypt('Bu123'), 
-                'user_level' => 2 
+                'user_level' => 2,
+                'business_unit_id' => 1
+
+            ], 
+
+            [ 
+                'name'=>'Business unit 2 ', 
+                'email'=>'2@uniten.edu.my', 
+                'password'=> bcrypt('Bu123'), 
+                'user_level' => 2,
+                'business_unit_id' => 2
+
+            ], 
+
+            [ 
+                'name'=>'Business unit 3 ', 
+                'email'=>'3@uniten.edu.my', 
+                'password'=> bcrypt('Bu123'), 
+                'user_level' => 2,
+                'business_unit_id' => 3
 
             ], 
 

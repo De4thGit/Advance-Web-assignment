@@ -67,9 +67,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 // Business Unit Route
 Route::middleware(['auth', 'businessunit'])->group(function () {
+    Route::get('/business_units', [BusinessUnitController::class, 'index'])->name('business_units.index');
     Route::get('/business_units/{businessUnit}', [BusinessUnitController::class, 'show'])->name('business_units.show');
     Route::get('/projects/create', [ProjectController::class, 'create'])->name('projects.create');
 });
+
 
 // Lead Developer Routes
 Route::middleware(['auth', 'developer'])->group(function () {

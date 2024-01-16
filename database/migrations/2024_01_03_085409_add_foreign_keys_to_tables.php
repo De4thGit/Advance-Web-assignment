@@ -16,6 +16,10 @@ return new class extends Migration
         Schema::table('progress_reports', function (Blueprint $table) {
             $table->foreign('project_id')->references('id')->on('projects');
         });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreign('business_unit_id')->references('id')->on('business_units');
+        });
     }
     
     public function down()
@@ -25,12 +29,12 @@ return new class extends Migration
             $table->dropForeign(['lead_developer_id']);
         });
     
-        Schema::table('developers', function (Blueprint $table) {
-            $table->dropForeign(['project_id']);
-        });
-    
         Schema::table('progress_reports', function (Blueprint $table) {
             $table->dropForeign(['project_id']);
+        });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign(['business_unit_id']);
         });
     }
 };

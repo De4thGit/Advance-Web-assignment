@@ -22,6 +22,7 @@ class User extends Authenticatable
         'email',
         'password',
         'user_level',
+        'business_unit_id',
     ];
 
     /**
@@ -43,4 +44,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function businessUnit()
+    {
+        return $this->belongsTo(BusinessUnit::class, 'business_unit_id');
+    }
 }
